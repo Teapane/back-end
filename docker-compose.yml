@@ -1,6 +1,14 @@
-version: "3"
+version: '3.7'
 
 services:
+  db:
+    image: postgres:10-alpine
+    ports:
+      - '5432'
+    environment:
+      - POSTGRES_DB=matrimania
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=foo
   app:
     build:
       context: .
@@ -10,3 +18,11 @@ services:
       - ./app:/app
     command: >
       sh -c "python manage.py runserver 0.0.0.0:8000"
+    environment:
+      - DB_HOST=127.0.0.1
+      - DB_NAME=matrimania
+      - DB_PORT=5432
+      - DB_PASSWORD=foo
+      - DB_USER=user
+    depends_on:
+      - db
