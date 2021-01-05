@@ -10,3 +10,15 @@ class Wedding(models.Model):
 
     def __str__(self):
         return self.name
+
+
+
+class Guest(models.Model):
+    name = models.CharField(max_length=50)
+    phone_number = models.CharField(max_length=50)
+    wedding = models.ForeignKey(Wedding, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.name
