@@ -3,11 +3,17 @@ from core import models
 
 
 class ModelTests(TestCase):
-    def test_vendor_str(self):
-        """Test the vendor string representation"""
+    def test_wedding_str(self):
+        """Test the wedding string representation"""
         name = 'Bart'
-        vendor = models.Vendor.objects.create(
-            name=name
+        email = 'test@email.com'
+        date = 'October 10th, 2022'
+        image = 'smthg.jpg'
+        wedding = models.Wedding.objects.create(
+            name=name,
+            email=email,
+            date=date,
+            image=image
         )
 
-        self.assertEqual(str(vendor), vendor.name)
+        self.assertEqual(str(wedding), wedding.name)
