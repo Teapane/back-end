@@ -6,9 +6,9 @@ class ModelTests(TestCase):
 
     def setUp(self):
         self.wedding1 = models.Wedding.objects.create(
-            name = 'Bart',
-            email = 'test@email.com',
-            date = 'October 10th, 2022'
+            name='Bart',
+            email='test@email.com',
+            date='October 10th, 2022'
         )
 
         self.guest1 = models.Guest.objects.create(
@@ -36,7 +36,6 @@ class ModelTests(TestCase):
 
         self.assertEqual(str(self.wedding1), self.wedding1.name)
 
-
     def test_guest_str(self):
         """Test the guest string representation"""
         name = 'Marge'
@@ -49,18 +48,14 @@ class ModelTests(TestCase):
 
         self.assertEqual(str(guest), guest.name)
 
-
     def test_photo_str(self):
         """Test the photo string representation"""
         self.assertEqual(str(self.photo1), self.photo1.number)
-
-
 
     def test_photoguest_attrs(self):
         """Test the photoguest attribute representations"""
         self.assertEqual((self.photoguest1.photo), self.photo1)
         self.assertEqual((self.photoguest1.guest), self.guest1)
-
 
     def test_wedding_guest_attrs(self):
         """Test the photoguest attribute representations"""
