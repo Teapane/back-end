@@ -18,14 +18,14 @@ class GetAllWeddingsTests(TestCase):
         self.client = APIClient()
 
         Wedding.objects.create(
-        name='Simpsons',
-        email='test@email.com',
-        date='06/01/2021'
+            name='Simpsons',
+            email='test@email.com',
+            date='06/01/2021'
         )
         Wedding.objects.create(
-        name='Smith',
-        email='test2@email.com',
-        date='08/01/2021'
+            name='Smith',
+            email='test2@email.com',
+            date='08/01/2021'
         )
 
     def test_retrieve_wedding_list(self):
