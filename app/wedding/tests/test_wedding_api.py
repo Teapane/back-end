@@ -9,6 +9,26 @@ from core.models import Wedding
 from wedding.serializers import WeddingSerializer
 
 WEDDINGS_URL = reverse('wedding:wedding-list')
+CREATE_WEDDING_URL = reverse('wedding:create')
+
+
+class PostWeddingTests(TestCase):
+    """Test module for POST wedding API"""
+
+    def setUp(self):
+        self.client = APIClient()
+
+    def test_create_wedding_success(self):
+        """Test creating wedding with valid credentials is successful"""
+        wedding_data = {
+            'name': 'Simpsons',
+            'email': 'test@email.com',
+            'date': '06/01/2021'
+        }
+
+        res = self.client.post(CREATE_WEDDING_URL, wedding_data)
+
+        self.assertEqual(res.status_code, status.HTTP_201_CREATED)
 
 
 class GetAllWeddingsTests(TestCase):
