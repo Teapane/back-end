@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from core.models import Wedding
 from core.models import Guest
+from core.models import Photo
 
 
 class WeddingSerializer(serializers.ModelSerializer):
@@ -13,3 +14,9 @@ class GuestSerializer(serializers.ModelSerializer):
     class Meta:
         model = Guest
         fields = ('id', 'name', 'phone_number', 'wedding')
+
+
+class PhotoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Photo
+        fields = ('id', 'number', 'description', 'guest')

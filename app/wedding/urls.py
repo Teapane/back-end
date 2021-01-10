@@ -17,4 +17,9 @@ urlpatterns = [
             views.CreateGuestView.as_view(),
             name='create_guest'
         ),
+    path(
+            'create_photo/',
+            views.CreatePhotoView.as_view(),
+            name='create_photo'
+        ),
 ]
