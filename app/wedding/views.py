@@ -7,6 +7,7 @@ from core.models import Guest
 from wedding import serializers
 from wedding.serializers import WeddingSerializer
 from wedding.serializers import GuestSerializer
+from wedding.serializers import PhotoSerializer
 
 
 class WeddingViewSet(viewsets.ModelViewSet):
@@ -29,3 +30,8 @@ class GuestViewSet(viewsets.ModelViewSet):
 class CreateGuestView(generics.CreateAPIView):
     """Create a new guest in the system"""
     serializer_class = GuestSerializer
+
+
+class CreatePhotoView(generics.CreateAPIView):
+    """Create a new photo in the system"""
+    serializer_class = PhotoSerializer
