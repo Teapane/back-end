@@ -95,6 +95,9 @@ celerybeat-schedule
 
 # Environments
 .env
+.env.dev
+.env.prod
+.env.prod.db
 .venv
 env/
 venv/
@@ -136,3 +139,5 @@ dmypy.json
 # End of https://www.gitignore.io/api/python,vagrant
 eb-package.zip
 static/
+
+.DS_Store
