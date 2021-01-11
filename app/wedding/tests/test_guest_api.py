@@ -79,7 +79,9 @@ class GetAllGuestsTests(TestCase):
             wedding=wedding2
         )
 
-        response = self.client.get('/api/v1/weddings/guests/?wedding=6')
+        response = self.client.get(
+                        "/api/v1/weddings/guests/?wedding=% s" % wedding1.id
+                                )
         guests = guest1.all_guests_given_wedding_id(wedding1.id)
         serializer = GuestSerializer(guests, many=True)
         self.assertEqual(response.data, serializer.data)
