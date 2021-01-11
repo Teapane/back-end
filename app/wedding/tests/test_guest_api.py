@@ -9,6 +9,7 @@ from core.models import Guest
 
 from wedding.serializers import GuestSerializer
 
+
 CREATE_WEDDING_URL = reverse('wedding:create')
 GUESTS_URL = reverse('wedding:guest-list')
 CREATE_GUEST_URL = reverse('wedding:create_guest')
@@ -82,4 +83,8 @@ class GetAllGuestsTests(TestCase):
         guests = guest1.all_guests_given_wedding_id(wedding1.id)
         serializer = GuestSerializer(guests, many=True)
         self.assertEqual(response.data, serializer.data)
+        self.assertIn(guest2.name, response.data[0]['name'])
+        self.assertIn(guest1.name, response.data[1]['name'])
+        self.assertNotIn(guest3.name, response.data[0]['name'])
+        self.assertNotIn(guest3.name, response.data[1]['name'])
         self.assertEqual(response.status_code, status.HTTP_200_OK)
