@@ -8,4 +8,4 @@ build:
 release:
   image: web
   command:
-    - docker-compose -f docker-compose.prod.yml exec app python app/manage.py migrate --noinput
+    - python app/manage.py migrate --noinput
