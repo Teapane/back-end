@@ -7,3 +7,5 @@ build:
     web: Dockerfile.prod
 release:
   image: web
+  command:
+    - app/manage.py migrate --noinput
