@@ -8,4 +8,4 @@ build:
 release:
   image: web
   command:
-    - python app/manage.py migrate --noinput
+    - exec app python app/manage.py migrate --noinput
