@@ -5,7 +5,7 @@ from wedding import views
 
 router = DefaultRouter()
 router.register('weddings', views.WeddingViewSet)
-router.register('guests', views.GuestViewSet)
+router.register(r'guests', views.GuestViewSet, basename='guest')
 
 app_name = 'wedding'
 
@@ -13,12 +13,12 @@ urlpatterns = [
     path('', include(router.urls)),
     path('create/', views.CreateWeddingView.as_view(), name='create'),
     path(
-            'create_guest/',
+            'guest/create/',
             views.CreateGuestView.as_view(),
             name='create_guest'
         ),
     path(
-            'create_photo/',
+            'photo/create/',
             views.CreatePhotoView.as_view(),
             name='create_photo'
         ),
