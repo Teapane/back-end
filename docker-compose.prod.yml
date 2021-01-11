@@ -1,0 +1,22 @@
+version: '3.7'
+services:
+  db:
+    image: postgres:10-alpine
+    volumes:
+      - postgres_data:/var/lib/postgres/data/
+    env_file:
+      - config/.env.prod.db
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+    ports:
+      - "8000:8000"
+    command: gunicorn --chdir app --bind 0.0.0.0:8000 app.wsgi:application
+    env_file:
+      - config/.env.prod
+    depends_on:
+      - db
+
+volumes:
+  postgres_data:
