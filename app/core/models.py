@@ -25,6 +25,12 @@ class Guest(models.Model):
     def __str__(self):
         return self.name
 
+    def get_wedding_id(self):
+        return self.wedding.id
+
+    def all_guests_given_wedding_id(self, id):
+        return Guest.objects.filter(wedding_id=id)
+
 
 class Photo(models.Model):
     number = models.CharField(max_length=3)
