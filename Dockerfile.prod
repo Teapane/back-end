@@ -18,7 +18,6 @@ RUN pip wheel --no-cache-dir --no-deps --wheel-dir /app/wheels -r /requirements.
 RUN apk del .tmp-build-deps
 
 COPY ./app /app
-RUN flake8 --ignore=E501,F401
 
 #########
 # FINAL #
