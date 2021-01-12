@@ -12,7 +12,7 @@ WEDDINGS_URL = reverse('wedding:wedding-list')
 CREATE_WEDDING_URL = reverse('wedding:create')
 
 
-class PostWeddingTests(TestCase):
+class WeddingTests(TestCase):
     """Test module for POST wedding API"""
 
     def setUp(self):
@@ -30,25 +30,19 @@ class PostWeddingTests(TestCase):
 
         self.assertEqual(res.status_code, status.HTTP_201_CREATED)
 
-
-class GetAllWeddingsTests(TestCase):
-    """Test module for GET all weddings API"""
-
-    def setUp(self):
-        self.client = APIClient()
+    def test_retrieve_wedding_list(self):
 
         Wedding.objects.create(
             name='Simpsons',
             email='test@email.com',
             date='06/01/2021'
         )
+
         Wedding.objects.create(
             name='Smith',
             email='test2@email.com',
             date='08/01/2021'
         )
-
-    def test_retrieve_wedding_list(self):
         response = self.client.get(WEDDINGS_URL)
         weddings = Wedding.objects.all()
         serializer = WeddingSerializer(weddings, many=True)

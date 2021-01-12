@@ -15,7 +15,7 @@ GUESTS_URL = reverse('wedding:guest-list')
 CREATE_GUEST_URL = reverse('wedding:create_guest')
 
 
-class PostGuestTests(TestCase):
+class GuestTests(TestCase):
     """Test module for POST guest API"""
 
     def setUp(self):
@@ -40,13 +40,6 @@ class PostGuestTests(TestCase):
         res = self.client.post(CREATE_GUEST_URL, guest_data)
 
         self.assertEqual(res.status_code, status.HTTP_201_CREATED)
-
-
-class GetAllGuestsTests(TestCase):
-    """Test module for GET all guests API"""
-
-    def setUp(self):
-        self.client = APIClient()
 
     def test_retrieve_guest_list(self):
         wedding1 = Wedding.objects.create(
