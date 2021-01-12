@@ -17,6 +17,7 @@ RUN pip install -r /requirements.txt
 RUN pip wheel --no-cache-dir --no-deps --wheel-dir /app/wheels -r /requirements.txt
 RUN apk del .tmp-build-deps
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
+RUN apk add --update --no-cache curl
 
 COPY ./app /app
 
