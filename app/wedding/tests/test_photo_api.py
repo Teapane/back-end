@@ -28,7 +28,7 @@ class PostPhotoTests(TestCase):
 
         guest = Guest.objects.create(
                         name='Uncle Bob',
-                        phone_number='2343454567',
+                        phoneNumber='2343454567',
                         wedding=wedding
         )
 
