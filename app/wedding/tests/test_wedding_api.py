@@ -8,8 +8,11 @@ from core.models import Wedding
 
 from wedding.serializers import WeddingSerializer
 
+import code
+
 WEDDINGS_URL = reverse('wedding:wedding-list')
 CREATE_WEDDING_URL = reverse('wedding:create')
+DELETE_WEDDING_URL = reverse('wedding:delete')
 
 
 class WeddingTests(TestCase):
@@ -48,3 +51,18 @@ class WeddingTests(TestCase):
         serializer = WeddingSerializer(weddings, many=True)
         self.assertEqual(response.data, serializer.data)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+    def test_delete_wedding_instance(self):
+
+        wedding_data = {
+            'name': 'Simpsons',
+            'email': 'test@email.com',
+            'date': '06/01/2021'
+        }
+
+        res = self.client.post(CREATE_WEDDING_URL, wedding_data)
+
+        self.assertEqual(res.status_code, status.HTTP_201_CREATED)
+        wedding = Wedding.objects.all()
+        code.interact(local=locals())
+        response = self.client.delete(DELETE_WEDDING_URL)
