@@ -56,6 +56,6 @@ class PhotoViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         queryset = Photo.objects.filter(
-                    wedding=self.request.query_params['wedding']
+                    weddingId=self.request.query_params['weddingId']
                                         )
         return queryset
