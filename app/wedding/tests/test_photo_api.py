@@ -8,7 +8,6 @@ from core.models import Wedding
 from core.models import Guest
 from core.models import Photo
 
-import code
 
 CREATE_PHOTO_URL = reverse('wedding:create_photo')
 
@@ -36,10 +35,10 @@ class PostPhotoTests(TestCase):
         )
 
         photo_data = {
-            'number': '1',
+            'number': 1,
             'description': 'Bride with Groom Family',
             'guest': guest.id,
-            'wedding': wedding.id
+            'weddingId': wedding.id
         }
 
         res = self.client.post(CREATE_PHOTO_URL, photo_data)
@@ -79,27 +78,25 @@ class PostPhotoTests(TestCase):
         )
 
         photo1 = Photo.objects.create(
-                        number='5',
+                        number=5,
                         description="Bride's family",
-                        wedding=wedding1
+                        weddingId=wedding1
         )
 
         photo1.guest.set([guest1, guest2])
 
         photo2 = Photo.objects.create(
-                        number='6',
+                        number=6,
                         description="Friends",
-                        wedding=wedding2
+                        weddingId=wedding2
         )
 
         photo2.guest.set([guest3])
 
         res = self.client.get(
-                    "/api/v1/weddings/photos/?wedding=% s" % wedding1.id
+                    "/api/v1/weddings/photos/?weddingId=% s" % wedding1.id
                     )
 
-        code.interact(local=locals())
         self.assertEqual(res.status_code, status.HTTP_200_OK)
-        self.assertIn(photo1.number, res.data[0]['number'])
-        self.assertNotIn(photo2.number, res.data[0]['number'])
-        
+        self.assertEqual(photo1.number, res.data[0]['number'])
+        self.assertNotEqual(photo2.number, res.data[0]['number'])
