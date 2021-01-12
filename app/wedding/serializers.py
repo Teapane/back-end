@@ -13,7 +13,7 @@ class WeddingSerializer(serializers.ModelSerializer):
 class GuestSerializer(serializers.ModelSerializer):
     class Meta:
         model = Guest
-        fields = ('id', 'name', 'phone_number', 'wedding')
+        fields = ('id', 'name', 'phoneNumber', 'wedding')
 
 
 class PhotoSerializer(serializers.ModelSerializer):

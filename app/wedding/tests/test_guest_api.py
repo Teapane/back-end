@@ -63,19 +63,19 @@ class GetAllGuestsTests(TestCase):
 
         guest1 = Guest.objects.create(
             name='Uncle Johnny',
-            phone_number='3450983458',
+            phoneNumber='3450983458',
             wedding=wedding1
         )
 
         guest2 = Guest.objects.create(
             name='Aunt Joan',
-            phone_number='3450962384',
+            phoneNumber='3450962384',
             wedding=wedding1
         )
 
         guest3 = Guest.objects.create(
             name='Grandma Charlotte',
-            phone_number='34523462384',
+            phoneNumber='34523462384',
             wedding=wedding2
         )
 
