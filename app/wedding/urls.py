@@ -7,6 +7,7 @@ router = DefaultRouter()
 router.register('weddings', views.WeddingViewSet)
 router.register(r'guests', views.GuestViewSet, basename='guest')
 router.register(r'photos', views.PhotoViewSet, basename='photo')
+router.register(r'remove', views.DeleteWeddingView, basename='remove')
 
 app_name = 'wedding'
 
@@ -22,10 +23,5 @@ urlpatterns = [
             'photo/create/',
             views.CreatePhotoView.as_view(),
             name='create_photo'
-        ),
-    path(
-            'delete/',
-            views.DeleteWeddingView.as_view(),
-            name='delete'
         ),
 ]
