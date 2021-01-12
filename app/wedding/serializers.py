@@ -19,4 +19,4 @@ class GuestSerializer(serializers.ModelSerializer):
 class PhotoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Photo
-        fields = ('id', 'number', 'description', 'guest')
+        fields = ('id', 'number', 'description', 'guest', 'wedding')
