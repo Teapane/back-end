@@ -10,6 +10,7 @@ from rest_framework import generics
 
 from core.models import Wedding
 from core.models import Guest
+from core.models import Photo
 
 from wedding import serializers
 from wedding.serializers import WeddingSerializer
@@ -47,3 +48,14 @@ class CreateGuestView(generics.CreateAPIView):
 class CreatePhotoView(generics.CreateAPIView):
     """Create a new photo in the system"""
     serializer_class = PhotoSerializer
+
+
+class PhotoViewSet(viewsets.ModelViewSet):
+    """Manage photos in the database"""
+    serializer_class = serializers.PhotoSerializer
+
+    def get_queryset(self):
+        queryset = Photo.objects.filter(
+                    wedding=self.request.query_params['wedding']
+                                        )
+        return queryset
