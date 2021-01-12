@@ -23,4 +23,9 @@ urlpatterns = [
             views.CreatePhotoView.as_view(),
             name='create_photo'
         ),
+    path(
+            'delete/',
+            views.DeleteWeddingView.as_view(),
+            name='delete'
+        ),
 ]
