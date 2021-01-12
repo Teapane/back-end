@@ -9,6 +9,7 @@ from core.models import Guest
 
 from wedding.serializers import GuestSerializer
 
+
 CREATE_WEDDING_URL = reverse('wedding:create')
 GUESTS_URL = reverse('wedding:guest-list')
 CREATE_GUEST_URL = reverse('wedding:create_guest')
@@ -47,28 +48,45 @@ class GetAllGuestsTests(TestCase):
     def setUp(self):
         self.client = APIClient()
 
-        wedding = Wedding.objects.create(
+    def test_retrieve_guest_list(self):
+        wedding1 = Wedding.objects.create(
             name='Bart',
             email='test@email.com',
             date='October 10th, 2022'
         )
-        wedding.save()
 
-        Guest.objects.create(
+        wedding2 = Wedding.objects.create(
+            name='Bart',
+            email='test@email.com',
+            date='October 10th, 2022'
+        )
+
+        guest1 = Guest.objects.create(
             name='Uncle Johnny',
             phone_number='3450983458',
-            wedding=wedding
+            wedding=wedding1
         )
 
-        Guest.objects.create(
+        guest2 = Guest.objects.create(
             name='Aunt Joan',
             phone_number='3450962384',
-            wedding=wedding
+            wedding=wedding1
         )
 
-    def test_retrieve_guest_list(self):
-        response = self.client.get(GUESTS_URL)
-        guests = Guest.objects.all()
+        guest3 = Guest.objects.create(
+            name='Grandma Charlotte',
+            phone_number='34523462384',
+            wedding=wedding2
+        )
+
+        response = self.client.get(
+                        "/api/v1/weddings/guests/?wedding=% s" % wedding1.id
+                                )
+        guests = guest1.all_guests_given_wedding_id(wedding1.id)
         serializer = GuestSerializer(guests, many=True)
         self.assertEqual(response.data, serializer.data)
+        self.assertIn(guest2.name, response.data[0]['name'])
+        self.assertIn(guest1.name, response.data[1]['name'])
+        self.assertNotIn(guest3.name, response.data[0]['name'])
+        self.assertNotIn(guest3.name, response.data[1]['name'])
         self.assertEqual(response.status_code, status.HTTP_200_OK)

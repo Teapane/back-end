@@ -31,7 +31,6 @@ class PostPhotoTests(TestCase):
                         phone_number='2343454567',
                         wedding=wedding
         )
-        guest.save()
 
         photo_data = {
             'number': '1',
@@ -40,6 +39,5 @@ class PostPhotoTests(TestCase):
         }
 
         res = self.client.post(CREATE_PHOTO_URL, photo_data)
-        # code.interact(local=locals())
 
         self.assertEqual(res.status_code, status.HTTP_201_CREATED)
