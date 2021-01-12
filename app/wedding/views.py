@@ -59,3 +59,16 @@ class PhotoViewSet(viewsets.ModelViewSet):
                     weddingId=self.request.query_params['weddingId']
                                         )
         return queryset
+
+
+class DeleteWeddingView(viewsets.ModelViewSet):
+    """Delete a wedding in the system"""
+    serializer_class = serializers.WeddingSerializer
+
+    def get_queryset(self):
+        queryset = Wedding.objects.filter(
+                    id=self.request.query_params['wedding']
+                                        )
+        wedding = queryset[0]
+        wedding.delete()
+        return queryset
