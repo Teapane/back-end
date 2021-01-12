@@ -12,7 +12,7 @@ from core.models import Photo
 CREATE_PHOTO_URL = reverse('wedding:create_photo')
 
 
-class PostPhotoTests(TestCase):
+class PhotoTests(TestCase):
     """Test module for POST photo API"""
 
     def setUp(self):
