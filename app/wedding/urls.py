@@ -7,6 +7,7 @@ router = DefaultRouter()
 router.register('weddings', views.WeddingViewSet)
 router.register(r'guests', views.GuestViewSet, basename='guest')
 router.register(r'photos', views.PhotoViewSet, basename='photo')
+router.register(r'remove', views.DeleteWeddingView, basename='remove')
 
 app_name = 'wedding'
 
