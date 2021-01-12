@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if [ "$DATABASE" = "postgres" ]
+if [ "$DATABASE" = "heroku-postgresql" ]
 then
     echo "Waiting for postgres..."
 
