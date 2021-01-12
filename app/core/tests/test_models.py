@@ -13,7 +13,7 @@ class ModelTests(TestCase):
 
         self.guest1 = models.Guest.objects.create(
             name='Marge',
-            phone_number='1234567890',
+            phoneNumber='1234567890',
             wedding=self.wedding1
         )
 
@@ -39,10 +39,10 @@ class ModelTests(TestCase):
     def test_guest_str(self):
         """Test the guest string representation"""
         name = 'Marge'
-        phone_number = '1234567890'
+        phoneNumber = '1234567890'
         guest = models.Guest.objects.create(
             name=name,
-            phone_number=phone_number,
+            phoneNumber=phoneNumber,
             wedding=self.wedding1
         )
 

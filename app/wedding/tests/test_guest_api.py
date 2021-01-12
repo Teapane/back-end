@@ -33,7 +33,7 @@ class PostGuestTests(TestCase):
 
         guest_data = {
             'name': 'Uncle Johnny',
-            'phone_number': '3450983458',
+            'phoneNumber': '3450983458',
             'wedding': wedding.id
         }
 
