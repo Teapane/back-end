@@ -18,7 +18,8 @@ class ModelTests(TestCase):
         )
 
         self.photo1 = models.Photo.objects.create(
-            number='1'
+            number='1',
+            wedding=self.wedding1
         )
 
         self.photoguest1 = models.PhotoGuest.objects.create(

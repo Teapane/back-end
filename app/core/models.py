@@ -34,6 +34,7 @@ class Photo(models.Model):
     number = models.CharField(max_length=3)
     description = models.CharField(max_length=255, blank=True)
     guest = models.ManyToManyField(Guest)
+    wedding = models.ForeignKey(Wedding, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.number
