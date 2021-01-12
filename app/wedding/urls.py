@@ -6,6 +6,7 @@ from wedding import views
 router = DefaultRouter()
 router.register('weddings', views.WeddingViewSet)
 router.register(r'guests', views.GuestViewSet, basename='guest')
+router.register(r'photos', views.PhotoViewSet, basename='photo')
 
 app_name = 'wedding'
 

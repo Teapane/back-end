@@ -31,11 +31,12 @@ class Guest(models.Model):
 
 
 class Photo(models.Model):
-    number = models.CharField(max_length=3)
+    number = models.IntegerField()
     description = models.CharField(max_length=255, blank=True)
     guest = models.ManyToManyField(Guest)
+    weddingId = models.ForeignKey(Wedding, on_delete=models.CASCADE)
 
-    def __str__(self):
+    def __int__(self):
         return self.number
 
 

@@ -18,7 +18,8 @@ class ModelTests(TestCase):
         )
 
         self.photo1 = models.Photo.objects.create(
-            number='1'
+            number=1,
+            weddingId=self.wedding1
         )
 
         self.photoguest1 = models.PhotoGuest.objects.create(
@@ -50,7 +51,7 @@ class ModelTests(TestCase):
 
     def test_photo_str(self):
         """Test the photo string representation"""
-        self.assertEqual(str(self.photo1), self.photo1.number)
+        self.assertEqual(int(self.photo1), self.photo1.number)
 
     def test_photoguest_attrs(self):
         """Test the photoguest attribute representations"""
