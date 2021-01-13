@@ -10,4 +10,4 @@ release:
   command:
     - python app/manage.py migrate --noinput
 run:
-  web: gunicorn --chdir app --bind 0.0.0.0:$PORT app.wsgi:application
+  web: gunicorn --chdir app/app --bind 0.0.0.0:$PORT app.wsgi:application
