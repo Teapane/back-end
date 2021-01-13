@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
+from decouple import config
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -33,6 +34,14 @@ CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:8000",
 ]
 
+TWILIO_ACCOUNT_SID = config("TWILIO_ACCOUNT_SID")
+TWILIO_AUTH_TOKEN = config("TWILIO_AUTH_TOKEN")
+TWILIO_NUMBER = config("TWILIO_NUMBER")
+SMS_BROADCAST_TO_NUMBERS = [
+    "", # use the format +19735551234
+    "",
+    "",
+]
 
 # Application definition
 
@@ -47,6 +56,7 @@ INSTALLED_APPS = [
     'core',
     'wedding',
     'corsheaders',
+    'notification',
 ]
 
 MIDDLEWARE = [
