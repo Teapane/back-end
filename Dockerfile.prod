@@ -47,4 +47,4 @@ RUN chown -R app:app $APP_HOME
 
 USER app
 
-CMD python3 manage.py runserver 0.0.0.0:$PORT
+CMD python3 app/manage.py runserver 0.0.0.0:$PORT
