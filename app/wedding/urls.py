@@ -8,6 +8,9 @@ router.register('weddings', views.WeddingViewSet)
 router.register(r'guests', views.GuestViewSet, basename='guest')
 router.register(r'photos', views.PhotoViewSet, basename='photo')
 router.register(r'remove', views.DeleteWeddingView, basename='remove')
+router.register(
+            r'remove_guest', views.DeleteGuestView, basename='remove_guest'
+                )
 
 app_name = 'wedding'
 

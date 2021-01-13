@@ -72,3 +72,16 @@ class DeleteWeddingView(viewsets.ModelViewSet):
         wedding = queryset[0]
         wedding.delete()
         return queryset
+
+
+class DeleteGuestView(viewsets.ModelViewSet):
+    """Delete a guest in the system"""
+    serializer_class = serializers.GuestSerializer
+
+    def get_queryset(self):
+        queryset = Guest.objects.filter(
+                    id=self.request.query_params['guest']
+                                        )
+        guest = queryset[0]
+        guest.delete()
+        return queryset
